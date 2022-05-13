@@ -1,0 +1,32 @@
+Create simple table using real data from our API.
+
+1) Using Individual statistics endpoint get data about all players - see https://logiq.docs.apiary.io/#reference/0/individual-statistics/individual-statistics
+- generate API token using credentials below - see https://logiq.docs.apiary.io/#reference/0/authentication/create-authentication-token
+{
+    "grant_type": "client_credentials",
+    "client_id": "john",
+    "client_secret": "doe"
+}
+
+- you'll need to generate competition uuid - see the documentation using links above, find competition endpoint, use it and pick one of the listed competitions by your choice
+- use body:
+{
+  "gameState": "5:5",
+  "timeOnIce": 600,
+  "metrics": [
+    "xg60",
+    "c60",
+    "sogc_pct"
+  ]
+}
+
+2) Create simple data table using stats in response.
+3) To control the table, include:
+- 3 check-boxes for the 3 metrics mentioned above controlling their presence in the data
+	- unchecking means not including the metric in the API call
+	- all 3 boxes unchecked lead to warning message "Please choose at least one metric!"
+- button to load data
+- possibility to sort the data by all of the columns clicking on the header
+4) Transfor the "toi" stat into time format mmmm:ss
+
+Design of the table doesn't matter, just make sure it doesn't look messy.
