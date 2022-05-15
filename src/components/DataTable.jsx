@@ -103,11 +103,16 @@ export default function DataTable() {
       setButtonDisabled(false);
       response.data.forEach((team) => {
         team.players.forEach((player) => {
+          let formattedToi = null;
+          formattedToi = `${Math.round(player.stats.toi / 60)}:${Math.round(
+            player.stats.toi % 60
+          )}`;
+
           fetchedRows.push({
             id: `${team.team}_${player.player}`,
             team: team.team,
             player: player.player,
-            toi: player.stats.toi,
+            toi: formattedToi,
             gp: player.stats.gp,
             xg60: player.stats.xg60,
             c60: player.stats.c60,
